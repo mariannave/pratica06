@@ -7,8 +7,22 @@
 	<version>1.0.0</version>
 	<packaging>war</packaging>
 
+
+	<repositories>
+		<repository>
+			<id>me.joffily</id>
+			<url>http://joffily.me/maven/</url>
+		</repository>
+	</repositories>
+
 	<name>Prática 06 de JSF: Navegação</name>
 	<dependencies>
+		<dependency>
+			<groupId>com.github.joffilyfe</groupId>
+			<artifactId>mvn-repository</artifactId>
+			<version>0.0.2</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
@@ -49,26 +63,21 @@
 			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>br.edu.ifpb.pweb</groupId>
-			<artifactId>turmas</artifactId>
-			<version>1.0.0</version>
-		</dependency>
 	</dependencies>
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.5.1</version>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-        </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>3.0.0</version>
-      </plugin>
-    </plugins>
-  </build>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.0.0</version>
+			</plugin>
+		</plugins>
+	</build>
 </project>
