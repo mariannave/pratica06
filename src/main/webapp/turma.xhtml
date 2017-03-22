@@ -5,57 +5,67 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
-	<f:metadata>
-		<f:viewParam name="id" value="#{turmasBean.turmaId}" />
-		<f:event type="preRenderView" listener="#{turmasBean.selecionar}"></f:event>
-	</f:metadata>
-	<h:head>
-		<link href="resources/css/bootstrap.css" rel="stylesheet" />
-		<title>Alunos</title>
-	</h:head>
+<f:metadata>
+	<f:viewParam name="id" value="#{turmasBean.turmaId}" />
+	<f:event type="preRenderView" listener="#{turmasBean.selecionar}"></f:event>
+</f:metadata>
+<h:head>
+	<link href="resources/css/bootstrap.css" rel="stylesheet" />
+	<title>Alunos</title>
+</h:head>
 
-	<h:body>
-		<div class="container">
-			<div class="jumbotron">
-				<h1>Alunos</h1>
-				<p>Cadastro de alunos</p>
-			</div>
-			<div class="main-page">
-				<h:form class="form-inline">
-					<div class="form-group">
-						<h:messages/>
-						Nome:
-						<h:inputText id="nome" value="#{turmasBean.aluno.nome}" required="true" class="form-control"/>
-						Matricula: 
-						<h:inputText id="matricula" value="#{turmasBean.aluno.matricula}" required="true" class="form-control"/>
-						<h:commandButton value="Matricular" action="#{turmasBean.matricular}" class="btn btn-default"/>
-					</div>
-				</h:form>
-				
-				<h:dataTable var="aluno" value="#{turmasBean.turma.alunos}"	rendered="#{not empty turmasBean.turma.alunos}" styleClass="table table-striped table-hover">			
+<h:body>
+	<div class="container">
+		<div class="jumbotron">
+			<h1>Alunos</h1>
+			<p>Cadastro de alunos</p>
+		</div>
+		<div class="main-page">
+			<h:form class="form-inline">
+				<div class="form-group">
+					<h:messages />
+					Nome:
+					<h:inputText id="nome" value="#{turmasBean.aluno.nome}"
+						required="true" class="form-control" />
+					Matrícula:
+					<h:inputText id="matricula" value="#{turmasBean.aluno.matricula}"
+						required="true" class="form-control" />
+					<h:commandButton value="Matricular"
+						action="#{turmasBean.matricular}" class="btn btn-default" />
+				</div>
+			</h:form>
+
+			<h:form>
+				<h:dataTable var="aluno" value="#{turmasBean.turma.alunos}"
+					rendered="#{not empty turmasBean.turma.alunos}"
+					styleClass="table table-striped table-hover">
 					<h:column>
 						<f:facet name="header">id</f:facet>
-						<h:outputText value="#{aluno.id}"/>
+						<h:outputText value="#{aluno.id}" />
 					</h:column>
-		
+
 					<h:column>
 						<f:facet name="header">Nome</f:facet>
-						<h:outputText value="#{aluno.nome}"/>
+						<h:outputText value="#{aluno.nome}" />
 					</h:column>
-		
+
 					<h:column>
 						<f:facet name="header">Matrícula</f:facet>
-						<h:outputText value="#{aluno.matricula}"/>
-					</h:column>		
+						<h:outputText value="#{aluno.matricula}" />
+					</h:column>
+
 					<h:column>
 						<f:facet name="header">Deletar</f:facet>
-						<h:commandButton value="Deletar" action="#{turmaBean.excluirAluno(aluno)}" styleClass="btn btn-danger"/>
-					</h:column>							
+						<h:commandButton value="Deletar" action="#{turmasBean.excluirA(aluno)}"
+							styleClass="btn btn-danger" />
+					</h:column>
 				</h:dataTable>
-				<h:form>
-					<h:commandButton value="Voltar" action="turmas" class="btn btn-primary"/>
-				</h:form>
-			</div>
+			</h:form>
+			<h:form>
+				<h:commandButton value="Voltar" action="turmas"
+					class="btn btn-primary" />
+			</h:form>
 		</div>
-	</h:body>
+	</div>
+</h:body>
 </html>

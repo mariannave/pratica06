@@ -35,7 +35,7 @@
 				</h:form>
 				<h:form>
 				<br/>
-				<h:commandButton actionListener="#{turmasBean.listarTurmas}" value="Atualizar" class="btn btn-default"/>					
+				<h:commandButton actionListener="#{turmasBean.listarTurmas}" value="Atualizar" class="btn btn-default" rendered="#{not empty turmasBean.turmas}"/>					
 					<h:dataTable var="turma" value="#{turmasBean.turmas}" 
 						rendered="#{not empty turmasBean.turmas}"
 						styleClass="table table-striped table-hover">
