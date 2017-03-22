@@ -75,7 +75,7 @@ public class TurmasBean {
 	}
 
 	public void selecionar() {
-		System.out.println("Chamando nova p·gina");
+		System.out.println("Chamando nova p√°gina");
 		turmaDao = new TurmaDAO(PersistenceUtil.getCurrentEntityManager());
 		this.turma = turmaDao.find(this.turmaId);
 		loadFlash();
@@ -120,12 +120,19 @@ public class TurmasBean {
 	}
 
 	public String excluirA(Aluno aluno) {
-		System.out.println("Deletando aluno");
+		AlunoDAO adao = new AlunoDAO(PersistenceUtil.getCurrentEntityManager());
+		TurmaDAO tdao = new TurmaDAO(PersistenceUtil.getCurrentEntityManager());
+		Turma turma = aluno.getTurma();
+		
+		turma.getAlunos().remove(aluno);
+		
+		tdao.beginTransaction();
+		tdao.update(turma);
+		tdao.commit();
 
-		alunoDao = new AlunoDAO(PersistenceUtil.getCurrentEntityManager());
-		alunoDao.beginTransaction();
-		alunoDao.delete(aluno);
-		alunoDao.commit();
+		adao.beginTransaction();
+		adao.delete(aluno);
+		adao.commit();
 		
 		return String.format("turma?id=%d&faces-redirect=true", this.turma.getId());
 	}
